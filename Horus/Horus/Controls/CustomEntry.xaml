@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Horus.Controls.CustomEntry">
+    <StackLayout Spacing="0">
+        <Label x:Name="floatLabel"
+               HorizontalOptions="Start"
+               Margin="{OnPlatform iOS='20,8', Android='20,4'}"
+               Style="{StaticResource Float-Label}" />
+
+        <pancakeView:PancakeView x:Name="entryContainer"
+                                 Padding="{OnPlatform iOS='20,8', Android='20,0'}"
+                                 BackgroundColor="{StaticResource Secondary-Light-Color}"
+                                 CornerRadius="10">
+
+            <Grid ColumnDefinitions="9.5*, .5*"
+                  ColumnSpacing="2"
+                  HorizontalOptions="FillAndExpand"
+                  BackgroundColor="Transparent">
+                <Entry x:Name="entry" 
+                       HorizontalOptions="FillAndExpand" 
+                       BackgroundColor="Transparent">
+                    <Entry.Effects>
+                        <xct:RemoveBorderEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Image x:Name="icon" HeightRequest="26" WidthRequest="26" Source="eye_b.png"
+                       HorizontalOptions="End"
+                       Grid.Column="2"
+                       IsVisible="False" />
+            </Grid>
+
+        </pancakeView:PancakeView>
+    </StackLayout>
+
+</ContentView>

@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="Prism.DryIoc.Extensions" Version="8.0.48" />
+        <PackageReference Include="Prism.Forms.Extended" Version="8.0.62" />
+        <PackageReference Include="ReactiveProperty" Version="8.1.2" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+        <PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
+        <PackageReference Include="Resizetizer.NT" Version="0.3.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Sharpnado.Shadows" Version="1.2.1" />
+        <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.4" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+        <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <SharedImage Include="Images\arrow_right_g.png" BaseSize="26,26" />
+        <SharedImage Include="Images\arrow_right_w.png" BaseSize="26,26" />
+        <SharedImage Include="Images\back_b.png" BaseSize="26,26" />
+        <SharedImage Include="Images\eye_b.png" BaseSize="26,26" />
+        <SharedImage Include="Images\eye_none_b.png" BaseSize="26,26" />
+        <SharedImage Include="Images\facebook_g.png" BaseSize="32,32" />
+        <SharedImage Include="Images\instagram_g.png" BaseSize="32,32" />
+        <SharedImage Include="Images\logo_w.png" BaseSize="137,37" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Styles\Colors.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Styles\Buttons.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Styles\Fonts.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Styles\Labels.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Styles\Space.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Styles\Buttons.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Styles\Colors.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Styles\Fonts.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Styles\Labels.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Styles\Space.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Prism.Forms.Extended">
+        <HintPath>..\..\..\..\.nuget\packages\prism.forms.extended\8.0.62\lib\monoandroid90\Prism.Forms.Extended.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+</Project>

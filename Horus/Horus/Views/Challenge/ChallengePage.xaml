@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:challenge="clr-namespace:Horus.Views.Challenge;assembly=Horus"
+             xmlns:shades="http://sharpnado.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource Secondary-Light-Color}"
+             x:DataType="challenge:ChallengePageViewModel"
+             x:Class="Horus.Views.Challenge.ChallengePage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="26, auto, *"
+              ColumnDefinitions="*, auto"
+              RowSpacing="{StaticResource Medium-Space-Value}"
+              Padding="{StaticResource Medium-Space}">
+
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Source="back_b.png"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Start"
+                   xct:TouchEffect.Command="{Binding BackCommand}" />
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Style="{StaticResource Title-Label}"
+                   Text="Challenges"
+                   HorizontalOptions="Start" />
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalOptions="End"
+                   IsVisible="{Binding IsBusy.Value, Converter={xct:InvertedBoolConverter}}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding CompletedChallenges.Value}"
+                              TextColor="{StaticResource Primary-Color}"
+                              FontSize="{StaticResource Small-Font}" />
+                        <Span Text="{Binding TotalChallenges.Value, StringFormat='/{0}'}"
+                              TextColor="{StaticResource Secondary-Dark-Color}"
+                              FontSize="{StaticResource Small-Font}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <CollectionView Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            ItemsSource="{Binding Items}"
+                            VerticalScrollBarVisibility="Never"
+                            HorizontalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="16" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="challenge:ChallengeItemViewModel">
+                        <shades:Shadows CornerRadius="45">
+                            <shades:Shadows.Shades>
+                                <shades:ImmutableShades>
+                                    <shades:Shade BlurRadius="10"
+                                                  Opacity="1"
+                                                  Offset="-2,-5"
+                                                  Color="#19000000" />
+                                    <shades:Shade BlurRadius="10"
+                                                  Opacity="1"
+                                                  Offset="8,8"
+                                                  Color="#19000000" />
+                                </shades:ImmutableShades>
+                            </shades:Shadows.Shades>
+                            <Frame CornerRadius="20"
+                                   HasShadow="False"
+                                   Padding="10"
+                                   BackgroundColor="{Binding IsCompleted, Converter={StaticResource IsCompletedToCardBackgroundColorConverter}}"
+                                   xct:TouchEffect.Command="{Binding SelectCommand}">
+
+                                <StackLayout VerticalOptions="Fill" InputTransparent="True">
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Style="{StaticResource SubTitle-Label}"
+                                               Text="{Binding Title}"
+                                               HorizontalOptions="StartAndExpand"
+                                               TextColor="{Binding IsCompleted, Converter={StaticResource IsCompletedToTextColorConverter}}" />
+
+                                        <Image HorizontalOptions="EndAndExpand"
+                                               Source="{Binding IsCompleted, Converter={StaticResource IsCompletedToArrowSourceConverter}}" />
+                                    </StackLayout>
+
+                                    <Label Text="{Binding Description}"
+                                           Margin="{StaticResource T-Small-Space}"
+                                           Style="{StaticResource Text-Label}"
+                                           TextColor="{Binding IsCompleted, Converter={StaticResource IsCompletedToTextColorConverter}}" />
+
+                                    <StackLayout Orientation="Horizontal"
+                                                 Margin="{StaticResource T-Small-Space}">
+                                        <Label Style="{StaticResource Text-Label}"
+                                               HorizontalOptions="StartAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding CurrentPoints}"
+                                                          TextColor="{Binding IsCompleted, Converter={StaticResource IsCompletedToTextColorConverter}}"
+                                                          FontSize="{StaticResource X-Small-Font}" />
+                                                    <Span Text="{Binding TotalPoints, StringFormat='/{0}'}"
+                                                          TextColor="{Binding IsCompleted, Converter={StaticResource IsCompletedToTextColorConverter}}"
+                                                          FontSize="{StaticResource X-Small-Font}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Style="{StaticResource Text-Label}"
+                                               HorizontalOptions="EndAndExpand"
+                                               Text="{Binding Percent, StringFormat='{0}%'}"
+                                               TextColor="{StaticResource White-Color}">
+                                            <Label.Triggers>
+                                                <DataTrigger Binding="{Binding IsCompleted}"
+                                                             Value="False"
+                                                             TargetType="Label">
+                                                    <Setter Property="TextColor" Value="{StaticResource Primary-Color}" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
+                                    </StackLayout>
+
+                                    <ProgressBar Margin="0,2,0,0"
+                                                 Progress="{Binding Progress}"
+
+                                                 ProgressColor="{Binding IsCompleted, Converter={StaticResource IsCompletedToProgressBarColorConverter}}" />
+
+                                </StackLayout>
+
+                            </Frame>
+                        </shades:Shadows>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <ActivityIndicator Grid.Row="2"
+                               Grid.ColumnSpan="2"
+                               Color="{StaticResource Primary-Color}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               IsRunning="{Binding IsBusy.Value}"
+                               IsVisible="{Binding IsBusy.Value}" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

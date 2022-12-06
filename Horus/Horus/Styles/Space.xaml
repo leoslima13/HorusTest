@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <!-- sizes -->
+    <x:Double x:Key="X-Large-Space-Value">36</x:Double>
+    <x:Double x:Key="Large-Space-Value">28</x:Double>
+    <x:Double x:Key="Medium-Space-Value">16</x:Double>
+    <x:Double x:Key="Small-Space-Value">8</x:Double>
+    
+    <!--All sides thickness-->
+    <Thickness x:Key="Medium-Space"
+               Left="{StaticResource Medium-Space-Value}"
+               Right="{StaticResource Medium-Space-Value}"
+               Top="{StaticResource Medium-Space-Value}"
+               Bottom="{StaticResource Medium-Space-Value}"/>
+    
+    <Thickness x:Key="Small-Space"
+               Left="{StaticResource Small-Space-Value}"
+               Right="{StaticResource Small-Space-Value}"
+               Top="{StaticResource Small-Space-Value}"
+               Bottom="{StaticResource Small-Space-Value}"/>
+    
+    <!--Left-->
+    <Thickness x:Key="L-Medium-Space" Left="{StaticResource Medium-Space-Value}" />
+    <Thickness x:Key="L-Small-Space" Left="{StaticResource Small-Space-Value}" />
+    
+    <!--Top-->
+    <Thickness x:Key="T-Large-Space" Top="{StaticResource Large-Space-Value}" />
+    <Thickness x:Key="T-Medium-Space" Top="{StaticResource Medium-Space-Value}" />
+    <Thickness x:Key="T-Small-Space" Top="{StaticResource Small-Space-Value}" />
+    
+</ResourceDictionary>

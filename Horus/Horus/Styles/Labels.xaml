@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <Style x:Key="Float-Label" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource X-Small-Font}" />
+        <Setter Property="TextColor" Value="{StaticResource Secondary-Color}" />
+    </Style>
+    
+    <Style x:Key="Title-Label" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource X-Large-Font}" />
+        <Setter Property="TextColor" Value="{StaticResource Secondary-Dark-Color}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+    
+    <Style x:Key="SubTitle-Label" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource Medium-Font}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+    
+    <Style x:Key="Text-Label" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource X-Small-Font}" />
+        <Setter Property="TextColor" Value="{StaticResource Secondary-Color}" />
+    </Style>
+    
+</ResourceDictionary>
